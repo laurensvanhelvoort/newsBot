@@ -5,7 +5,9 @@ import requests
 import schedule
 
 # API key from NewsAPI
-api_key = "52fd89f912104f76aa170f6947b98e1b"
+api_key = "..."
+# Receiving phone number
+p_num = "+..."
 
 
 def get_news(num_articles):
@@ -35,7 +37,7 @@ def get_news(num_articles):
 def send_message(msg):
     # opens whatsapp web and inputs 'msg' argument in text bar
     # input string number in first argument
-    pywhatkit.sendwhatmsg_instantly("+12345678910", msg)
+    pywhatkit.sendwhatmsg_instantly(str(p_num), msg)
 
     # search webpage for screenshot of send icon (comment out, only for finding coords of send button)
     coords = pyautogui.locateCenterOnScreen("send.png", grayscale=True, confidence=.8)
