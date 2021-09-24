@@ -5,8 +5,8 @@ import requests
 import schedule
 
 # API key from NewsAPI
-api_key = "52fd89f912104f76aa170f6947b98e1b"
-p_num = "+31613657980"
+api_key = "..."
+p_num = "+12345678910"
 
 
 def get_news(num_articles):
