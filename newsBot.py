@@ -5,15 +5,15 @@ import requests
 import schedule
 
 # API key from NewsAPI
-api_key = "..."
-# Receiving phone number
-p_num = "+..."
+api_key = "52fd89f912104f76aa170f6947b98e1b"
+p_num = "+31613657980"
 
 
 def get_news(num_articles):
     # request top headlines from The Netherlands
     main_url = f"https://newsapi.org/v2/top-headlines?country=nl&apiKey={api_key}"
     news = requests.get(main_url).json()
+
     articles = news["articles"]
 
     # retrieve article and source from json data
@@ -37,7 +37,7 @@ def get_news(num_articles):
 def send_message(msg):
     # opens whatsapp web and inputs 'msg' argument in text bar
     # input string number in first argument
-    pywhatkit.sendwhatmsg_instantly(str(p_num), msg)
+    pywhatkit.sendwhatmsg_instantly(p_num, msg)
 
     # search webpage for screenshot of send icon (comment out, only for finding coords of send button)
     coords = pyautogui.locateCenterOnScreen("send.png", grayscale=True, confidence=.8)
@@ -54,7 +54,7 @@ def activate_bot():
 
 
 # send message as per schedule
-schedule.every(1).minutes.do(activate_bot)
+schedule.every().day.at("8:30").do(activate_bot)
 
 while True:
     schedule.run_pending()
